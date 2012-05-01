@@ -1,0 +1,41 @@
+= Simple Version
+
+Makes it easy to manage the version of a gem or project.
+
+== Synopsis:
+
+ $ cat Rakefile
+ require 'bundler'
+ Bundler.require(:rake)
+ SimpleVersion.changelog = 'CHANGELOG.rdoc' # defaults to CHANGELOG
+ SimpleVersion.version_namespace = 'MyApp' # defaults to camel-cased name of current directory
+ SimpleVersion.version_file = 'lib/version.rb' # defaults to 'lib/#{name-of-current-directory}/version.rb'
+
+ $ rake version
+ 1.2.3
+
+ $ rake version:bump:build
+ checking for uncommitted changes...ok
+ checking for master branch...ok
+ opening CHANGELOG.rdoc for editing...done
+ updating version.rb...done
+ committing and tagging with new version 1.2.4...done
+ pushing to github...done
+ new version is 1.2.4
+
+ $ rake version:bump:minor
+ ...
+ new version is 1.3.0
+
+ $ rake version:bump:major
+ ...
+ new version is 2.0.0
+
+ $ rake version:bump:dev
+ ...
+ new version is 2.0.0.0
+
+ $ rake version:bump:build
+ ...
+ new version is 2.0.1
+ 
